@@ -60,7 +60,7 @@ class Window(QMainWindow):
         """Open the Add Contact dialog."""
         dialog = AddDialog(self)
         if dialog.exec() == QDialog.Accepted:
-            self.contactsModel.addContact(dialog.data)
+            self.contactsModel.add_contact(dialog.data)
             self.table.resizeColumnsToContents()
 
     def deleteContact(self):
@@ -77,7 +77,7 @@ class Window(QMainWindow):
         )
 
         if messageBox == QMessageBox.Ok:
-            self.contactsModel.deleteContact(row)
+            self.contactsModel.delete_contact(row)
 
     def clearContacts(self):
         """Remove all contacts from the database."""
@@ -89,7 +89,7 @@ class Window(QMainWindow):
         )
 
         if messageBox == QMessageBox.Ok:
-            self.contactsModel.clearContacts()
+            self.contactsModel.clear_contacts()
 
 
 class AddDialog(QDialog):

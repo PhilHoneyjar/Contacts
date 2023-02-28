@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtSql import QSqlDatabase, QSqlQuery
 
 
-def _createContactsTable():
+def create_contacts_table():
     createTableQuery = QSqlQuery()
     return createTableQuery.exec(
         """
@@ -16,7 +16,7 @@ def _createContactsTable():
     )
 
 
-def createConnection(databaseName):
+def create_connection(databaseName):
     connection = QSqlDatabase.addDatabase("QSQLITE")
     connection.setDatabaseName(databaseName)
 
@@ -28,5 +28,5 @@ def createConnection(databaseName):
         )
         return False
 
-    _createContactsTable()
+    create_contacts_table()
     return True

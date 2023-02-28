@@ -4,11 +4,10 @@ from PyQt5.QtSql import QSqlTableModel
 
 class ContactsModel:
     def __init__(self):
-        self.model = self._createModel()
+        self.model = self.create_model()
 
     @staticmethod
-    def _createModel():
-        """Create and set up the model."""
+    def create_model():
         tableModel = QSqlTableModel()
         tableModel.setTable("contacts")
         tableModel.setEditStrategy(QSqlTableModel.OnFieldChange)
@@ -18,8 +17,7 @@ class ContactsModel:
             tableModel.setHeaderData(columnIndex, Qt.Horizontal, header)
         return tableModel
 
-    def addContact(self, data):
-        """Add a contact to the database."""
+    def add_contact(self, data):
         rows = self.model.rowCount()
         self.model.insertRows(rows, 1)
         for column_index, field in enumerate(data):
@@ -27,14 +25,12 @@ class ContactsModel:
         self.model.submitAll()
         self.model.select()
 
-    def deleteContact(self, row):
-        """Remove a contact from the database."""
+    def delete_contact(self, row):
         self.model.removeRow(row)
         self.model.submitAll()
         self.model.select()
 
-    def clearContacts(self):
-        """Remove all contacts in the database."""
+    def clear_contacts(self):
         self.model.setEditStrategy(QSqlTableModel.OnManualSubmit)
         self.model.removeRows(0, self.model.rowCount())
         self.model.submitAll()
