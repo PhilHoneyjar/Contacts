@@ -29,20 +29,20 @@ class Window(QMainWindow):
         self.centralWidget.setLayout(self.layout)
 
         self.contactsModel = ContactsModel()
-        self.setupUI()
+        self.setup_UI()
 
-    def setupUI(self):
+    def setup_UI(self):
         self.table = QTableView()
         self.table.setModel(self.contactsModel.model)
         self.table.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.table.resizeColumnsToContents()
 
         self.addButton = QPushButton("Add")
-        self.addButton.clicked.connect(self.openAddDialog)
+        self.addButton.clicked.connect(self.open_add_dialog)
         self.deleteButton = QPushButton("Delete")
-        self.deleteButton.clicked.connect(self.deleteContact)
+        self.deleteButton.clicked.connect(self.delete_contact)
         self.clearAllButton = QPushButton("Clear All")
-        self.clearAllButton.clicked.connect(self.clearContacts)
+        self.clearAllButton.clicked.connect(self.clear_contacts)
 
         layout = QVBoxLayout()
         layout.addWidget(self.addButton)
@@ -52,13 +52,13 @@ class Window(QMainWindow):
         self.layout.addWidget(self.table)
         self.layout.addLayout(layout)
 
-    def openAddDialog(self):
+    def open_add_dialog(self):
         dialog = AddDialog(self)
         if dialog.exec() == QDialog.Accepted:
             self.contactsModel.add_contact(dialog.data)
             self.table.resizeColumnsToContents()
 
-    def deleteContact(self):
+    def delete_contact(self):
         row = self.table.currentIndex().row()
         if row < 0:
             return
@@ -72,7 +72,7 @@ class Window(QMainWindow):
         if messageBox == QMessageBox.Ok:
             self.contactsModel.delete_contact(row)
 
-    def clearContacts(self):
+    def clear_contacts(self):
         messageBox = QMessageBox.warning(
             self,
             "Do you want to remove all your contacts?",
@@ -92,9 +92,9 @@ class AddDialog(QDialog):
         self.setLayout(self.layout)
         self.data = None
 
-        self.setupUI()
+        self.setup_UI()
 
-    def setupUI(self):
+    def setup_UI(self):
         self.nameField = QLineEdit()
         self.nameField.setObjectName("Name")
         self.last_nameField = QLineEdit()
