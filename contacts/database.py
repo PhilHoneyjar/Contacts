@@ -8,10 +8,10 @@ def create_contacts_table():
         """
         CREATE TABLE IF NOT EXISTS contacts (
             id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
-            name VARCHAR(40) NOT NULL,
-            job VARCHAR(50),
-            email VARCHAR(40) NOT NULL
-        )
+            name VARCHAR(50) NOT NULL,
+            last_name VARCHAR(50) NOT NULL,
+            phone INTEGER(40),
+            email VARCHAR(50) NOT NULL)
         """
     )
 
