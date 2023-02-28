@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-
-"""This module provides views to manage the contacts table."""
-
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (
     QAbstractItemView,

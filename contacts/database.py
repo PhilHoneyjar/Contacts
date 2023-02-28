@@ -1,13 +1,8 @@
-# -*- coding: utf-8 -*-
-
-"""This module provides a database connection."""
-
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtSql import QSqlDatabase, QSqlQuery
 
 
 def _createContactsTable():
-    """Create the contacts table in the database."""
     createTableQuery = QSqlQuery()
     return createTableQuery.exec(
         """
@@ -22,14 +17,13 @@ def _createContactsTable():
 
 
 def createConnection(databaseName):
-    """Create and open a database connection."""
     connection = QSqlDatabase.addDatabase("QSQLITE")
     connection.setDatabaseName(databaseName)
 
     if not connection.open():
         QMessageBox.warning(
             None,
-            "RP Contact",
+            "Contact",
             f"Database Error: {connection.lastError().text()}",
         )
         return False
