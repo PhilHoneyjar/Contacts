@@ -106,7 +106,7 @@ class AddDialog(QDialog):
 
         layout = QFormLayout()
         layout.addRow("Name:", self.nameField)
-        layout.addRow("Last_name:", self.nameField)
+        layout.addRow("Last_name:", self.last_nameField)
         layout.addRow("Phone:", self.phoneField)
         layout.addRow("Email:", self.emailField)
         self.layout.addLayout(layout)
