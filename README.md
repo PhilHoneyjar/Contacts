@@ -1,0 +1,1 @@
+Contacts is a Python app where you can add and delete contacts. UI made with PyQT.
